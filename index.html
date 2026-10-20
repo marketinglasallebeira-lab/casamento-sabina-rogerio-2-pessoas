@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f5eee5">
+<title>Casamento de Sabina &amp; Rogério</title>
+<meta name="description" content="Convite de casamento de Sabina e Rogério. Toque no envelope para abrir.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Casamento de Sabina &amp; Rogério">
+<meta property="og:description" content="Um convite especial para celebrar o casamento de Sabina e Rogério.">
+<meta property="og:image" content="convite-preview.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="image" href="envelope.webp" fetchpriority="high">
+<style>
+:root{color-scheme:light;--ivory:#f5eee5;--brown:#825344;--gold:#b18a39}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--ivory);color:var(--brown)}
+.app{position:relative;width:100%;height:100%;height:100dvh;overflow:hidden;background:var(--ivory)}
+.stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;perspective:1200px;cursor:pointer;touch-action:manipulation;outline:none}
+.page{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;transition:opacity .75s ease,transform .9s ease;user-select:none;-webkit-user-drag:none}
+.cover{opacity:1;transform:scale(1)}
+.inside{opacity:0;transform:translateY(20px) scale(.98);pointer-events:none}
+.stage.open .cover{opacity:0;transform:scale(.96)}
+.stage.open .inside{opacity:1;transform:translateY(0) scale(1)}
+.hint{position:absolute;z-index:3;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translateX(-50%);max-width:calc(100% - 28px);white-space:nowrap;text-align:center;padding:11px 17px;border:1px solid #c6a76c;border-radius:999px;background:#fffaf0ed;color:#735b31;font-size:14px;box-shadow:0 4px 18px #4d38251c;pointer-events:none;transition:opacity .3s}
+.stage.open~.hint{opacity:0}
+.confirm{position:absolute;z-index:5;bottom:calc(16px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:none;max-width:calc(100% - 24px);padding:13px 20px;border-radius:999px;background:#825344;color:white;text-decoration:none;text-align:center;font-size:14px;font-weight:600;box-shadow:0 5px 18px #39251f35;white-space:nowrap}
+.app.open .confirm{display:block}
+.reset{position:absolute;z-index:6;top:calc(12px + env(safe-area-inset-top));right:12px;display:none;padding:9px 13px;border:1px solid #c6a76c;border-radius:999px;background:#fffaf0e8;color:#735b31;font-size:13px}
+.app.open .reset{display:block}
+@media(prefers-reduced-motion:reduce){.page,.hint{transition:none}}
+</style>
+</head>
+<body>
+<main class="app" id="app">
+  <div class="stage" id="stage" role="button" tabindex="0" aria-label="Abrir ou fechar o convite">
+    <img class="page cover" src="envelope.webp" fetchpriority="high" decoding="async" alt="Envelope marfim com selo dourado e iniciais S e R">
+    <img class="page inside" src="convite-conteudo.webp" decoding="async" alt="Convite de casamento de Sabina e Rogério, 11 de Dezembro de 2026">
+  </div>
+  <p class="hint" id="hint">Toque no envelope para abrir o convite</p>
+  <a class="confirm" id="confirm" href="https://convitin.com.br/matrimonio-sabina-rogerio/" target="_blank" rel="noopener noreferrer">Confirmar presença</a>
+  <button class="reset" id="reset" type="button">Voltar à capa</button>
+</main>
+<script>
+const app=document.getElementById('app');
+const stage=document.getElementById('stage');
+const hint=document.getElementById('hint');
+const reset=document.getElementById('reset');
+function setOpen(open){
+  app.classList.toggle('open',open);
+  stage.classList.toggle('open',open);
+  hint.textContent=open?'Convite aberto':'Toque no envelope para abrir o convite';
+  stage.setAttribute('aria-label',open?'Voltar à capa do convite':'Abrir o convite');
+}
+stage.addEventListener('click',()=>setOpen(!app.classList.contains('open')));
+stage.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();setOpen(!app.classList.contains('open'));}});
+reset.addEventListener('click',()=>setOpen(false));
+</script>
+</body>
+</html>

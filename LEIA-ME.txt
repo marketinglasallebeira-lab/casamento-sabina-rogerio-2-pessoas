@@ -1,0 +1,21 @@
+CONVITE DE CASAMENTO — SABINA E ROGÉRIO
+
+PACOTE OPTIMIZADO PARA GITHUB PAGES
+
+Ficheiros a carregar na raiz do repositório:
+- index.html
+- envelope.webp
+- convite-conteudo.webp
+- convite-preview.jpg
+
+Como publicar:
+1. Extraia este ZIP.
+2. Abra o repositório GitHub do convite.
+3. Carregue os quatro ficheiros acima na raiz (root), substituindo o index.html anterior.
+4. Em Settings > Pages, confirme Deploy from a branch, branch main e pasta /(root).
+5. Aguarde a publicação e teste o link no telemóvel.
+
+O convite mantém a capa interactiva, a imagem interior e o botão “Confirmar presença”, que aponta para:
+https://convitin.com.br/matrimonio-sabina-rogerio/
+
+As imagens foram convertidas de PNG para WebP para reduzir o tempo de carregamento. Mantenha os nomes dos ficheiros exactamente como estão e coloque-os na mesma pasta do index.html.
